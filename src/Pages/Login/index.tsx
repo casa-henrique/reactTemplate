@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import LogoCodifica from "../../assets/images/Logos/Icon-Codifica.svg";
-import LogoIsraelita from "../../assets/images/Logos/Logo-Israelita.png";
+import LogoIsraelita from "../../assets/images/Logos/israelita_logo_azul.png";
 import LogoMaplebear from "../../assets/images/Logos/Logo-Maplebear.png";
 import sideImage from "../../assets/images/o-professor-deve-estar-sempre-alerta.jpg";
 import { LoginAutentication } from "./LoginAutentication";
@@ -69,7 +69,7 @@ export function Login() {
           />
           <button onClick={handleSubmitLogin}>Acessar</button>
           <p>
-            Não possui cadastro? <a href="">clique aqui</a>
+            Não possui cadastro? <a href="mailto:barbarabatistuzzo@codificaedu.com.br">clique aqui</a>
           </p>
         </LoginForm>
       </section>

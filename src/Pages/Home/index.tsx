@@ -20,7 +20,7 @@ export function Home() {
   return (
     <Container>
       <DevWarning />
-      <h2>Bem-vindo Professor(a) <span>{userInfos ? userInfos.user.name : null}</span> </h2>
+      <h2>Boas vindas professor(a) <span>{userInfos ? userInfos.user.name : null}</span> </h2>
 
       <Warning message='Para acessar o material basta clicar em sua turma'/>
 
