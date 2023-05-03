@@ -5,15 +5,15 @@ export const Container = styled.div`
   flex-direction: column;
   position: relative;
 
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
   align-items: center;
 
   .showHeader,
   .hideHeader {
     position: absolute;
-    top: 1.5rem;
+    top: 0.5rem;
     right: 2rem;
 
     background-color: transparent;
@@ -65,11 +65,15 @@ export const Container = styled.div`
     }
   }
 
-  > iframe {
-    height: 100%;
-    width: 100%;
-
-    border-radius: 0.8rem;
-    border: none;
-  }
 `;
+
+export const PdfView = styled.embed`
+  height: 100%;
+  width: 100%;
+
+  border: none;
+
+  .toolbar {
+    background-color: red !important;
+  }
+`

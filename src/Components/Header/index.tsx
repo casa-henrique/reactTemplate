@@ -26,6 +26,11 @@ export function Header({ schoolName, type }: HeaderProps) {
 
   const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita };
 
+  function userLogOut() {
+    localStorage.removeItem('user')
+    navigate(`/${schoolName}/login`)
+  }
+
   return (
     <HeaderContainer>
       <Content>
@@ -39,7 +44,8 @@ export function Header({ schoolName, type }: HeaderProps) {
 
         {type == "inside" ? (
           <nav className="navigation">
-            <a onClick={() => navigate(`/${schoolName}/home`)}>Home</a>
+            <a onClick={() => navigate(`/${schoolName}/home`)}>Voltar para Home</a>
+            <a onClick={() => userLogOut()}>Sair</a>
           </nav>
         ) : null}
       </Content>

@@ -7,7 +7,7 @@ import {
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { api } from "../../lib/api";
-import { Container } from "./styles";
+import { Container, PdfView } from "./styles";
 
 interface ActivityProps {
   id: string;
@@ -25,6 +25,7 @@ export function Activity() {
     .replaceAll("%C2%BA", "º")
     .replace("/maplebear", "")
     .replace("/israelita", "");
+
 
   function goBack() {
     history.back();
@@ -69,7 +70,7 @@ export function Activity() {
       </button>
 
       {activity?.link ? (
-        <iframe src={`${activity?.link}#toolbar=0`} />
+        <PdfView src={`${activity?.link}`} type="application/pdf"/>
       ) : (
         <Skeleton height="40rem" width="80rem" baseColor="#e4e4e4" />
       )}

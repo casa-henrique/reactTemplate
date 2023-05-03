@@ -5,69 +5,103 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: 100%;
 
+  background-color: var(--text-white);
+
+  margin-bottom: 5rem;
+  
   .trailHeader {
     display: flex;
 
-    height: 10%;
+    height: 15%;
     width: 100%;
 
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
 
     padding: 2rem 2rem;
+    margin-bottom: 2rem;
 
-    background-color: #eee;
+    background-color: #eee ;
 
     > h1 {
-      color: var(--secondary-blue);
+      color: var(--secondary-lime);
       font-family: "inter";
-    }
-
-    > div {
-      display: grid;
-      grid-template-columns: auto auto;
-      column-gap: 1.5rem;
-
-      > p {
-        max-width: 10rem;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
     }
   }
 
   .activityWrapper {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 1rem;
+    margin-bottom: 2rem;
+  }
 
-    width: 100%;
-    height: 90%;
-
-    padding: 1rem;
-
-    > div {
+  .activityItem, .activityItemSoon {
       display: flex;
+      flex-direction: column;
       position: relative;
+
       width: 90%;
-      height: 6rem;
+      height: 14rem;
+      
+      align-items: center;
+      justify-content: space-between;
 
-      padding: 0.5rem;
+      overflow: hidden;
 
-      background-color: var(--secondary-blue);
-      border-radius: 0.2rem;
+      background-color: var(--text-white);
+      border-radius: 0.4rem;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
 
+      
+      &::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 0.4rem;
+        padding: 2px;
+        background: linear-gradient(#1B88EF, #24C07D);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+      
+      :first-child{
+        margin-left: 1rem;
+      }
+      
       :hover {
         cursor: pointer;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.40);
       }
-    }
 
-    > div > p {
-      color: var(--text-white);
-      text-transform: uppercase;
+      > div {
+      display: flex;
+      background-color: #F3F3F3;
+
+      align-items: center;
+      justify-content: center;
+      
+      width: 100%;
+      height: 50%;
+
+      > img {
+        width: 60%;
+        height: 60%;
+      }
+  }
+
+    >  p {
+      font-family: "inter";
+      font-weight: bold;
+      margin: 0 1rem;
+      text-align: center;
     }
+  }
+
+  .activityItemSoon {
+    justify-content: center;
   }
 
   .activityName {
@@ -79,7 +113,12 @@ export const Container = styled.div`
   .activityTitle {
     font-size: 1.5rem;
     margin: 1rem 0 1rem 1rem;
-    color: var(--secondary-lime);
+    color: var(--secondary-blue);
     font-weight: bold;
+  }
+
+  .soon{
+    margin: 1rem 0 1rem 1rem;
+    font-family: 'Inter';
   }
 `;

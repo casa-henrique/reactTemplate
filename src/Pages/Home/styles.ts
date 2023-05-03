@@ -5,7 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
 
   align-items: center;
-  justify-content: space-around;
+
+  gap: 2rem;
 
   width: 100%;
   height: calc(100vh - 13vh);
@@ -13,5 +14,10 @@ export const Container = styled.div`
   > h2 {
     font-family: "Inter";
     color: var(--secondary-lime);
+    margin-top: 2rem;
+
+    > span {
+      text-transform: capitalize;
+    }
   }
 `;

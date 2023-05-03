@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import LogoCodifica from "../../assets/images/Logos/Icon-Codifica.svg";
 import LogoIsraelita from "../../assets/images/Logos/Logo-Israelita.png";
 import LogoMaplebear from "../../assets/images/Logos/Logo-Maplebear.png";
-import sideImage from "../../assets/images/humor-alegre-grupo-de-pessoas-em-conferencia-de-negocios-em-sala-de-aula-moderna-durante-o-dia.jpg";
+import sideImage from "../../assets/images/o-professor-deve-estar-sempre-alerta.jpg";
 import { LoginAutentication } from "./LoginAutentication";
 import { Container, LoginForm } from "./styles";
 

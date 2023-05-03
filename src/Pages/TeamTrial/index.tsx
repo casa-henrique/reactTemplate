@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 import { Container } from "./styles";
+import iconImage from '../../assets/images/Logos/icon-codifica-clean.svg'
+import { Button } from "@mui/material";
 
 interface TrailProps {
   activity: string[];
@@ -54,30 +56,34 @@ export function TeamTrial() {
     <Container>
       <div className="trailHeader">
         <h1>{trailNameByUrl}</h1>
-        {/* <div>
-          <p aria-hidden="true" title={`${trail?.resources.join(", ")}`}>
-            Recursos: {trail ? trail.resources.join(", ") : ""}
-          </p>
-          <p>Série: {trail ? trail.year : ""}</p>
-          <p aria-hidden="true" title={`${trail?.axel.join(", ")}`}>
-            Eixos: {trail ? trail.axel.join(", ") : ""}
-          </p>
-          <p>{trail ? trail.difficulty : ""}</p>
-        </div> */}
       </div>
 
-      <p className="activityTitle">Atividades</p>
-
+      <p className="activityTitle">Atividades {schoolName == 'maplebear' ? null :"Semestre 1"}</p>
       <div className="activityWrapper">
         {trail?.activity.map((item, index) => {
           return (
-            <div key={index} onClick={() => enterActivity(item)}>
-              <p>{index + 1}</p>
-              <p className="activityName">{item.replaceAll("MP", "")}</p>
+            <div className="activityItem" key={index} onClick={() => enterActivity(item)}>
+              <div>
+                <img src={iconImage} />
+              </div>
+              <p>{item.replaceAll("MP", "")}</p>
+              <Button>Acessar</Button>
             </div>
           );
         })}
       </div>
+
+      {schoolName == 'maplebear' ? null : <>
+      <p className="activityTitle">Atividades Semestre 2</p>
+      <div className="activityWrapper">
+        <div className="activityItemSoon">
+          <p>Em Breve</p>
+        </div>
+      </div>
+      </>}
+
+      <p className="activityTitle">Avaliação {schoolName == 'maplebear' ? null : "Semestre 1"}</p>
+      <p className="soon">Em breve</p>
     </Container>
   );
 }
