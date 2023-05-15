@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import LogoCodifica from "../../assets/images/Logos/Logo-Codifica.svg";
 import LogoIsraelita from "../../assets/images/Logos/Logo-Israelita.png";
 import LogoMaplebear from "../../assets/images/Logos/Logo-Maplebear.png";
+import LogoDivino from "../../assets/images/Logos/Logo-DivinoMestre.png";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { Content, HeaderContainer } from "./styles";
 
 interface SchoolListProps {
   maplebear: string;
   israelita: string;
+  divinomestre: string;
 }
 
 interface HeaderProps {
@@ -24,7 +26,7 @@ export function Header({ schoolName, type }: HeaderProps) {
     setSchoolName(schoolName);
   }, [schoolName]);
 
-  const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita };
+  const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita, divinomestre: LogoDivino };
 
   function userLogOut() {
     localStorage.removeItem('user')

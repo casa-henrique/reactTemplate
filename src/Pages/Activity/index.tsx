@@ -24,6 +24,7 @@ export function Activity() {
     .replaceAll("%20", " ")
     .replaceAll("%C2%BA", "º")
     .replace("/maplebear", "")
+    .replace("/divinomestre", "")
     .replace("/israelita", "");
 
 

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import LogoCodifica from "../../assets/images/Logos/Icon-Codifica.svg";
 import LogoIsraelita from "../../assets/images/Logos/israelita_logo_azul.png";
 import LogoMaplebear from "../../assets/images/Logos/Logo-Maplebear.png";
+import LogoDivinoMestre from "../../assets/images/Logos/Logo-DivinoMestre.png";
 import sideImage from "../../assets/images/o-professor-deve-estar-sempre-alerta.jpg";
 import { LoginAutentication } from "./LoginAutentication";
 import { Container, LoginForm } from "./styles";
@@ -21,7 +22,7 @@ export function Login() {
   const schoolNameByUrl = window.location.pathname;
   const schoolName = schoolNameByUrl.replaceAll("/", "").replace("login", "");
 
-  const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita };
+  const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita, divinomestre: LogoDivinoMestre};
 
   function handleSubmitForm(event: any) {
     event.preventDefault();

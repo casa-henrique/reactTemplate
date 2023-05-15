@@ -8,7 +8,7 @@ export function HomeSection() {
     <Container>
       <Content>
         <h1>
-          Plataforma de conteúdo para o educador <span>{schoolName}</span>
+          Plataforma de conteúdo para o educador <span>{schoolName == "divinomestre" ? "Divino Mestre" : schoolName}</span>
         </h1>
 
         <p>Trilha formativa de Educação Tecnológica</p>

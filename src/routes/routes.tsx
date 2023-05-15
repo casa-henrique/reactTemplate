@@ -30,9 +30,19 @@ export function Routes() {
             </>
           }
         />
+        <Route
+          path="/divinomestre"
+          element={
+            <>
+              <Header type="lp" schoolName="divinomestre" />
+              <SchoolsHome schoolNameUrl="Divino Mestre" />
+            </>
+          }
+        />
 
         <Route path="/israelita/login" element={<Login />} />
         <Route path="/maplebear/login" element={<Login />} />
+        <Route path="/divinomestre/login" element={<Login />} />
 
         <Route
           path="/maplebear/home"
@@ -48,6 +58,15 @@ export function Routes() {
           element={
             <>
               <Header type="inside" schoolName="israelita" />
+              <Home />
+            </>
+          }
+        />
+        <Route
+          path="/divinomestre/home"
+          element={
+            <>
+              <Header type="inside" schoolName="divinomestre" />
               <Home />
             </>
           }
@@ -71,9 +90,19 @@ export function Routes() {
             </>
           }
         />
+        <Route
+          path="/divinomestre/trail/:trail"
+          element={
+            <>
+              <Header type="inside" schoolName="divinomestre" />
+              <TeamTrial />
+            </>
+          }
+        />
 
         <Route path="/maplebear/atividade/:atividade" element={<Activity />} />
         <Route path="/israelita/atividade/:atividade" element={<Activity />} />
+        <Route path="/divinomestre/atividade/:atividade" element={<Activity />} />
       </Router>
     </BrowserRouter>
   );

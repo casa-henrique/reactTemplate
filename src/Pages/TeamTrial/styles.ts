@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
+  width: 100vw;
 
   background-color: var(--text-white);
 
@@ -22,7 +22,7 @@ export const Container = styled.div`
     padding: 2rem 2rem;
     margin-bottom: 2rem;
 
-    background-color: #eee ;
+    background-color: #eee;
 
     > h1 {
       color: var(--secondary-lime);
@@ -31,10 +31,12 @@ export const Container = styled.div`
   }
 
   .activityWrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-column-gap: 1rem;
-    margin-bottom: 2rem;
+    display: flex;
+    width: 98vw;
+    overflow-x: auto;
+    
+    padding: 16px;
+    gap: 1rem;
   }
 
   .activityItem, .activityItemSoon {
@@ -42,19 +44,17 @@ export const Container = styled.div`
       flex-direction: column;
       position: relative;
 
-      width: 90%;
       height: 14rem;
+      min-width: 12rem;
+      max-width: 12rem;
       
       align-items: center;
       justify-content: space-between;
-
-      overflow: hidden;
 
       background-color: var(--text-white);
       border-radius: 0.4rem;
       box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
 
-      
       &::before{
         content: "";
         position: absolute;
@@ -66,10 +66,7 @@ export const Container = styled.div`
         -webkit-mask-composite: xor;
         mask-composite: exclude;
       }
-      
-      :first-child{
-        margin-left: 1rem;
-      }
+
       
       :hover {
         cursor: pointer;

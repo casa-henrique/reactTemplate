@@ -25,8 +25,10 @@ export function TeamTrial() {
     .replace("/trail/", "")
     .replace("/maplebear", "")
     .replace("/israelita", "")
+    .replace("/divinomestre", "")
     .replaceAll("%20", " ")
-    .replaceAll("%C2%BA", "º");
+    .replaceAll("%C2%BA", "º")
+    .replaceAll("%C3%AD", "í");
 
   function trailNameFilter(data: any) {
     return trailNameByUrl == data.name;
