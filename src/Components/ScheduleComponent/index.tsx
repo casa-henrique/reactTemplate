@@ -106,7 +106,7 @@ export function ScheduleComponent() {
           currentViewName={currentViewState}
           onCurrentViewNameChange={handleViewChange}
         />
-        <DayView displayName="Dia" startDayHour={9} endDayHour={18} />
+        <DayView displayName="Dia" startDayHour={7} endDayHour={18} />
         <WeekView
           name="work-week"
           displayName="Semana"
