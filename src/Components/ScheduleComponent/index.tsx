@@ -111,7 +111,7 @@ export function ScheduleComponent() {
           name="work-week"
           displayName="Semana"
           excludedDays={[0, 6]}
-          startDayHour={9}
+          startDayHour={7}
           endDayHour={18}
         />
         <Appointments />
