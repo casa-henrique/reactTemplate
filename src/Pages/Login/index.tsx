@@ -22,6 +22,8 @@ export function Login() {
   const schoolNameByUrl = window.location.pathname;
   const schoolName = schoolNameByUrl.replaceAll("/", "").replace("login", "");
 
+  console.log(schoolName)
+
   const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita, divinomestre: LogoDivinoMestre};
 
   function handleSubmitForm(event: any) {

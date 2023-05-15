@@ -13,7 +13,7 @@ export function HomeSection() {
 
         <p>Trilha formativa de Educação Tecnológica</p>
 
-        <a href={`/${schoolName.toLocaleLowerCase()}/login`}>
+        <a href={`/${schoolName.toLocaleLowerCase().replaceAll(" ", "")}/login`}>
           <button>Acessar</button>
         </a>
       </Content>
