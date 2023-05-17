@@ -6,7 +6,6 @@ import { DevWarning } from "../../Components/DevWarning";
 
 export function Home() {
   const[userInfos, setUserInfos] = useState<any>()
-  const[showDevWarning, setShowDevWarning] = useState(true)
 
   useEffect(() => {
     const user = localStorage.getItem('user');

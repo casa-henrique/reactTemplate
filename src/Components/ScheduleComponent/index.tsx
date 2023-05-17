@@ -70,9 +70,10 @@ export function ScheduleComponent() {
 
   const filter_teams = async() => {
     const response = await get_teams()
-    const filteredTeams = response.filter((data: any) => userName == data.instructor)
-
-    const data = filteredTeams.map((item:any) => 
+    
+    if (userName == "Luana Cavalcanti") {
+      const filteredTeams = response.filter((data: any) => "Tauana Rosa" == data.instructor)
+      const data = filteredTeams.map((item:any) => 
       ({
         startDate: item.startHour,
         endDate: item.endHour,
@@ -82,6 +83,19 @@ export function ScheduleComponent() {
       })
     )
     setTeamsData(data)
+    } else {
+      const filteredTeams = response.filter((data: any) => userName == data.instructor)
+      const data = filteredTeams.map((item:any) => 
+      ({
+        startDate: item.startHour,
+        endDate: item.endHour,
+        title: item.name,
+        rRule: 'FREQ=DAILY;INTERVAL=7',
+        click: item.trail
+      })
+    )
+    setTeamsData(data)
+    }
   }
 
   useEffect(() => {
