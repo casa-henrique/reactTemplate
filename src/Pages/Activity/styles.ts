@@ -67,7 +67,7 @@ export const Container = styled.div`
 
 `;
 
-export const PdfView = styled.embed`
+export const PdfView = styled.iframe`
   height: 100%;
   width: 100%;
 

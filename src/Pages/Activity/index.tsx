@@ -8,6 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { api } from "../../lib/api";
 import { Container, PdfView } from "./styles";
+import { PdfToHtml } from "../../Components/PdfToHtml";
 
 interface ActivityProps {
   id: string;
@@ -71,7 +72,7 @@ export function Activity() {
       </button>
 
       {activity?.link ? (
-        <PdfView src={`${activity?.link}`} type="application/pdf"/>
+        <PdfToHtml activityLink={activity?.link}/>
       ) : (
         <Skeleton height="40rem" width="80rem" baseColor="#e4e4e4" />
       )}
