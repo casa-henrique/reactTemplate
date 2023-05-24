@@ -6,7 +6,6 @@ interface PdfConverterProps {
     activityLink: string;
 }
 
-
 export const PdfToHtml = ({activityLink}:PdfConverterProps) => {
 const [numPages, setNumPages] = useState<number | null>(null);
 
