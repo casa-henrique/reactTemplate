@@ -36,7 +36,7 @@ const convertToHTML = () => {
 
 return (
     <div>
-        <Document file={activityLink} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document  file={activityLink} onLoadSuccess={onDocumentLoadSuccess}>
             {numPages && convertToHTML()}
         </Document>    
     </div>
