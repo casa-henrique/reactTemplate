@@ -6,9 +6,9 @@ import {
 } from "react-icons/io";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { api } from "../../lib/api";
-import { Container, PdfView } from "./styles";
 import { PdfToHtml } from "../../Components/PdfToHtml";
+import { api } from "../../lib/api";
+import { Container } from "./styles";
 
 interface ActivityProps {
   id: string;
@@ -27,7 +27,6 @@ export function Activity() {
     .replace("/maplebear", "")
     .replace("/divinomestre", "")
     .replace("/israelita", "");
-
 
   function goBack() {
     history.back();
@@ -72,7 +71,7 @@ export function Activity() {
       </button>
 
       {activity?.link ? (
-        <PdfToHtml activityLink={activity?.link}/>
+        <PdfToHtml activityLink={activity?.link} />
       ) : (
         <Skeleton height="40rem" width="80rem" baseColor="#e4e4e4" />
       )}
