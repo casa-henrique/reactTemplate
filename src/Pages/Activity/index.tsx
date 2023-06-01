@@ -73,6 +73,7 @@ export function Activity() {
       {activity?.link ? (
         <PdfToHtml activityLink={activity?.link} />
       ) : (
+        // <PdfView src={`${activity?.link}`} />
         <Skeleton height="40rem" width="80rem" baseColor="#e4e4e4" />
       )}
     </Container>
