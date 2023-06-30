@@ -1,10 +1,10 @@
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import iconImage from "../../assets/images/Logos/icon-codifica-clean.svg";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 import { Container } from "./styles";
-import iconImage from '../../assets/images/Logos/icon-codifica-clean.svg'
-import { Button } from "@mui/material";
 
 interface TrailProps {
   activity: string[];
@@ -38,6 +38,10 @@ export function TeamTrial() {
     navigate(`/${schoolName}/atividade/${name}`);
   }
 
+  function enterTestPage() {
+    navigate(`/${schoolName}/avaliacao`);
+  }
+
   const list_trail = async () => {
     try {
       const response = await api.get("/trail");
@@ -60,11 +64,17 @@ export function TeamTrial() {
         <h1>{trailNameByUrl}</h1>
       </div>
 
-      <p className="activityTitle">Atividades {schoolName == 'maplebear' ? null :"Semestre 1"}</p>
+      <p className="activityTitle">
+        Atividades {schoolName == "maplebear" ? null : "Semestre 1"}
+      </p>
       <div className="activityWrapper">
         {trail?.activity.map((item, index) => {
           return (
-            <div className="activityItem" key={index} onClick={() => enterActivity(item)}>
+            <div
+              className="activityItem"
+              key={index}
+              onClick={() => enterActivity(item)}
+            >
               <div>
                 <img src={iconImage} />
               </div>
@@ -75,17 +85,28 @@ export function TeamTrial() {
         })}
       </div>
 
-      {schoolName == 'maplebear' ? null : <>
-      <p className="activityTitle">Atividades Semestre 2</p>
+      {schoolName == "maplebear" ? null : (
+        <>
+          <p className="activityTitle">Atividades Semestre 2</p>
+          <div className="activityWrapper">
+            <div className="activityItemSoon">
+              <p>Em Breve</p>
+            </div>
+          </div>
+        </>
+      )}
+
+      <p className="activityTitle">
+        Avaliação {schoolName == "maplebear" ? null : "Semestre 1"}
+      </p>
       <div className="activityWrapper">
-        <div className="activityItemSoon">
-          <p>Em Breve</p>
+        <div
+          onClick={() => enterTestPage()}
+          className="activityItemSoon testItemSchool"
+        >
+          <Button>Acessar</Button>
         </div>
       </div>
-      </>}
-
-      <p className="activityTitle">Avaliação {schoolName == 'maplebear' ? null : "Semestre 1"}</p>
-      <p className="soon">Em breve</p>
     </Container>
   );
 }

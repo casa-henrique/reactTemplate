@@ -5,6 +5,7 @@ import { Home } from "../Pages/Home";
 import { Login } from "../Pages/Login";
 import { SchoolsHome } from "../Pages/SchoolsHome";
 import { TeamTrial } from "../Pages/TeamTrial";
+import { TestPage } from "../Pages/TestPage";
 
 export function Routes() {
   return (
@@ -102,7 +103,14 @@ export function Routes() {
 
         <Route path="/maplebear/atividade/:atividade" element={<Activity />} />
         <Route path="/israelita/atividade/:atividade" element={<Activity />} />
-        <Route path="/divinomestre/atividade/:atividade" element={<Activity />} />
+        <Route
+          path="/divinomestre/atividade/:atividade"
+          element={<Activity />}
+        />
+
+        <Route path="/maplebear/avaliacao" element={<TestPage />} />
+        <Route path="/israelita/avaliacao" element={<TestPage />} />
+        <Route path="/divinomestre/avaliacao" element={<TestPage />} />
       </Router>
     </BrowserRouter>
   );

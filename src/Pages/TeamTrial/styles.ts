@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: var(--text-white);
 
   margin-bottom: 5rem;
-  
+
   .trailHeader {
     display: flex;
 
@@ -34,52 +34,53 @@ export const Container = styled.div`
     display: flex;
     width: 98vw;
     overflow-x: auto;
-    
+
     padding: 16px;
     gap: 1rem;
   }
 
-  .activityItem, .activityItemSoon {
-      display: flex;
-      flex-direction: column;
-      position: relative;
+  .activityItem,
+  .activityItemSoon {
+    display: flex;
+    flex-direction: column;
+    position: relative;
 
-      height: 14rem;
-      min-width: 12rem;
-      max-width: 12rem;
-      
-      align-items: center;
-      justify-content: space-between;
+    height: 14rem;
+    min-width: 12rem;
+    max-width: 12rem;
 
-      background-color: var(--text-white);
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--text-white);
+    border-radius: 0.4rem;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       border-radius: 0.4rem;
-      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
+      padding: 2px;
+      background: linear-gradient(#1b88ef, #24c07d);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
 
-      &::before{
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 0.4rem;
-        padding: 2px;
-        background: linear-gradient(#1B88EF, #24C07D);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-      }
+    :hover {
+      cursor: pointer;
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+    }
 
-      
-      :hover {
-        cursor: pointer;
-        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.40);
-      }
-
-      > div {
+    > div {
       display: flex;
-      background-color: #F3F3F3;
+      background-color: #f3f3f3;
 
       align-items: center;
       justify-content: center;
-      
+
       width: 100%;
       height: 50%;
 
@@ -87,9 +88,9 @@ export const Container = styled.div`
         width: 60%;
         height: 60%;
       }
-  }
+    }
 
-    >  p {
+    > p {
       font-family: "inter";
       font-weight: bold;
       margin: 0 1rem;
@@ -99,6 +100,10 @@ export const Container = styled.div`
 
   .activityItemSoon {
     justify-content: center;
+  }
+
+  .testItemSchool {
+    height: 8rem;
   }
 
   .activityName {
@@ -114,8 +119,8 @@ export const Container = styled.div`
     font-weight: bold;
   }
 
-  .soon{
+  .soon {
     margin: 1rem 0 1rem 1rem;
-    font-family: 'Inter';
+    font-family: "Inter";
   }
 `;
