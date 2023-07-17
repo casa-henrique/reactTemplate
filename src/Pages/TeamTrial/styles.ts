@@ -39,6 +39,11 @@ export const Container = styled.div`
     gap: 1rem;
   }
 
+  .resultItem {
+    justify-content: center !important;
+    gap: 1rem;
+  }
+
   .activityItem,
   .activityItemSoon {
     display: flex;

@@ -3,6 +3,7 @@ import { Header } from "../Components/Header";
 import { Activity } from "../Pages/Activity";
 import { Home } from "../Pages/Home";
 import { Login } from "../Pages/Login";
+import { ResultPage } from "../Pages/ResultPage";
 import { SchoolsHome } from "../Pages/SchoolsHome";
 import { TeamTrial } from "../Pages/TeamTrial";
 import { TestPage } from "../Pages/TestPage";
@@ -111,6 +112,8 @@ export function Routes() {
         <Route path="/maplebear/avaliacao" element={<TestPage />} />
         <Route path="/israelita/avaliacao" element={<TestPage />} />
         <Route path="/divinomestre/avaliacao" element={<TestPage />} />
+
+        <Route path="/israelita/result/:resultId" element={<ResultPage />} />
       </Router>
     </BrowserRouter>
   );

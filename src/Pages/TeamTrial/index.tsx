@@ -16,8 +16,19 @@ interface TrailProps {
   year: string;
 }
 
+interface ResultProps {
+  name: string;
+  team: string;
+  documentLink: string;
+  type: string;
+}
+
 export function TeamTrial() {
   const [trail, setTrail] = useState<TrailProps | undefined>();
+  const [resultList, setResultList] = useState<ResultProps[] | undefined>();
+  const [teamResultList, setTeamResultList] = useState<
+    ResultProps[] | undefined
+  >();
   const navigate = useNavigate();
   const { schoolName } = useSchoolNameContext();
 
@@ -34,6 +45,10 @@ export function TeamTrial() {
     return trailNameByUrl == data.name;
   }
 
+  function resultTeamSevenFilter(data: any) {
+    return "7" == data.team;
+  }
+
   function enterActivity(name: string) {
     navigate(`/${schoolName}/atividade/${name}`);
   }
@@ -41,6 +56,21 @@ export function TeamTrial() {
   function enterTestPage() {
     navigate(`/${schoolName}/avaliacao`);
   }
+  function enterResultPage(id: string) {
+    navigate(`/${schoolName}/result/${id}`);
+  }
+
+  function listResults() {
+    if (trailNameByUrl == "7º ano E.F.") {
+      const teamResults = resultList?.filter(resultTeamSevenFilter);
+      setTeamResultList(teamResults);
+    }
+    if (trailNameByUrl == "6º ano E.F") {
+    } else if (trailNameByUrl == "8º ano E.F") {
+    }
+  }
+
+  console.log(teamResultList);
 
   const list_trail = async () => {
     try {
@@ -54,9 +84,27 @@ export function TeamTrial() {
     }
   };
 
+  const list_results = async () => {
+    try {
+      const response = await api.get("/result");
+
+      await setResultList(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     list_trail();
   }, []);
+
+  useEffect(() => {
+    list_results();
+  }, []);
+
+  useEffect(() => {
+    listResults();
+  }, [resultList]);
 
   return (
     <Container>
@@ -106,6 +154,24 @@ export function TeamTrial() {
         >
           <Button>Acessar</Button>
         </div>
+      </div>
+
+      <p className="activityTitle">
+        Resultados {schoolName == "maplebear" ? null : "Semestre 1"}
+      </p>
+      <div className="activityWrapper">
+        {teamResultList?.map((item: any, index: any) => {
+          return (
+            <div
+              className="activityItem resultItem"
+              key={index}
+              onClick={() => enterResultPage(item.id)}
+            >
+              <p>{item.name}</p>
+              <Button>Acessar</Button>
+            </div>
+          );
+        })}
       </div>
     </Container>
   );
