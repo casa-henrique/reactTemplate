@@ -1,4 +1,4 @@
-import { AppointmentModel, ViewState } from "@devexpress/dx-react-scheduler";
+import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   AppointmentTooltip,
   Appointments,
@@ -17,20 +17,22 @@ import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 
 interface TeamsDataProps {
-  startDate: string,
-  endDate: string,
-  title: string,
-  rRule: string,
+  startDate: string;
+  endDate: string;
+  title: string;
+  rRule: string;
 }
 
 export function ScheduleComponent() {
-  const [teamsData, setTeamsData] = useState<TeamsDataProps[] | undefined>(undefined)
-  const [userName, setUserName] = useState()
+  const [teamsData, setTeamsData] = useState<TeamsDataProps[] | undefined>(
+    undefined
+  );
+  const [userName, setUserName] = useState();
   const date = new Date();
   const [dateState, setDateState] = useState(date);
   const [currentViewState, setCurrentViewState] = useState("work-week");
   const navigate = useNavigate();
-  const {schoolName} = useSchoolNameContext()
+  const { schoolName } = useSchoolNameContext();
 
   const handleViewChange = (newViewState: string) => {
     setCurrentViewState(newViewState);
@@ -46,7 +48,12 @@ export function ScheduleComponent() {
       appointmentData={appointmentData}
     >
       <Button
-        onClick={() => enterTrail(appointmentData.click)}
+        onClick={() =>
+          enterTrail({
+            name: appointmentData.click,
+            team: appointmentData.title,
+          })
+        }
         variant="contained"
         sx={{ mt: "1rem", ml: "1rem" }}
       >
@@ -55,64 +62,88 @@ export function ScheduleComponent() {
     </AppointmentTooltip.Content>
   );
 
-  function enterTrail(name: string) {
-    navigate(`/${schoolName}/trail/${name}`);
+  function enterTrail({ name, team }: any) {
+    navigate(`/${schoolName}/trail/${name}?team=${team}`);
   }
 
   const get_teams = async () => {
     try {
       const response = await api.get("/team");
-      return response.data
+      return response.data;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const filter_teams = async() => {
-    const response = await get_teams()
-    
+  const filter_teams = async () => {
+    const response = await get_teams();
+
     if (userName == "Luana Cavalcanti") {
-      const filteredTeams = response.filter((data: any) => "Tauana Rosa" == data.instructor)
-      const data = filteredTeams.map((item:any) => 
-      ({
+      const filteredTeams = response.filter(
+        (data: any) => "Tauana Rosa" == data.instructor
+      );
+      const data = filteredTeams.map((item: any) => ({
         startDate: item.startHour,
         endDate: item.endHour,
         title: item.name,
-        rRule: 'FREQ=DAILY;INTERVAL=7',
-        click: item.trail
-      })
-    )
-    setTeamsData(data)
+        rRule: "FREQ=DAILY;INTERVAL=7",
+        click: item.trail,
+      }));
+      setTeamsData(data);
     } else {
-      const filteredTeams = response.filter((data: any) => userName == data.instructor)
-      const data = filteredTeams.map((item:any) => 
-      ({
+      const filteredTeams = response.filter(
+        (data: any) => userName == data.instructor
+      );
+      const data = filteredTeams.map((item: any) => ({
         startDate: item.startHour,
         endDate: item.endHour,
         title: item.name,
-        rRule: 'FREQ=DAILY;INTERVAL=7',
-        click: item.trail
-      })
-    )
-    setTeamsData(data)
+        rRule: "FREQ=DAILY;INTERVAL=7",
+        click: item.trail,
+      }));
+      setTeamsData(data);
     }
-  }
+  };
 
   useEffect(() => {
     filter_teams();
   }, [teamsData]);
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
 
-    if(user) {
-      const userObject = JSON.parse(user)
-      setUserName(userObject.user.name)
+    if (user) {
+      const userObject = JSON.parse(user);
+      setUserName(userObject.user.name);
     }
   }, []);
 
   return (
-    <Paper sx={[{ height: "70%", width: "90%", position:'relative', padding:'0.2rem', borderRadius:'8px' }, {"&::before": {content:"''",  position:"absolute", inset: "0", borderRadius: "8px", padding: "2px", background:'linear-gradient(#1B88EF, #24C07D)', WebkitMask:"linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);", WebkitMaskComposite:'xor', maskComposite:'exclude'}}]}>
+    <Paper
+      sx={[
+        {
+          height: "70%",
+          width: "90%",
+          position: "relative",
+          padding: "0.2rem",
+          borderRadius: "8px",
+        },
+        {
+          "&::before": {
+            content: "''",
+            position: "absolute",
+            inset: "0",
+            borderRadius: "8px",
+            padding: "2px",
+            background: "linear-gradient(#1B88EF, #24C07D)",
+            WebkitMask:
+              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);",
+            WebkitMaskComposite: "xor",
+            maskComposite: "exclude",
+          },
+        },
+      ]}
+    >
       <Scheduler data={teamsData} locale={"pt-BR"}>
         <ViewState
           onCurrentDateChange={currentDateChange}

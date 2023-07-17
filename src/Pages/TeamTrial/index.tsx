@@ -32,6 +32,9 @@ export function TeamTrial() {
   const navigate = useNavigate();
   const { schoolName } = useSchoolNameContext();
 
+  const queryParameters = new URLSearchParams(window.location.search);
+  const teamParam = queryParameters.get("team");
+
   const trailNameByUrl = window.location.pathname
     .replace("/trail/", "")
     .replace("/maplebear", "")
@@ -48,6 +51,16 @@ export function TeamTrial() {
   function resultTeamSevenFilter(data: any) {
     return "7" == data.team;
   }
+  function resultTeamSixFilter(data: any) {
+    return "6" == data.team;
+  }
+  function resultTeamEightFilter(data: any) {
+    return "8" == data.team;
+  }
+
+  function resultTeamAvaliationFilter(data: any) {
+    return teamParam == data.team;
+  }
 
   function enterActivity(name: string) {
     navigate(`/${schoolName}/atividade/${name}`);
@@ -62,15 +75,34 @@ export function TeamTrial() {
 
   function listResults() {
     if (trailNameByUrl == "7º ano E.F.") {
-      const teamResults = resultList?.filter(resultTeamSevenFilter);
+      let teamResults = resultList?.filter(resultTeamSevenFilter);
+      const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
+
+      if (teamParam == "71") {
+        teamResults?.push(avaliacao[0]);
+      }
+
+      console.log(teamResults);
       setTeamResultList(teamResults);
     }
     if (trailNameByUrl == "6º ano E.F") {
+      const teamResults = resultList?.filter(resultTeamSixFilter);
+      const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
+
+      if (teamParam == "61") {
+        teamResults?.push(avaliacao[0]);
+      }
+      setTeamResultList(teamResults);
     } else if (trailNameByUrl == "8º ano E.F") {
+      const teamResults = resultList?.filter(resultTeamEightFilter);
+      const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
+
+      if (teamParam == "81") {
+        teamResults?.push(avaliacao[0]);
+      }
+      setTeamResultList(teamResults);
     }
   }
-
-  console.log(teamResultList);
 
   const list_trail = async () => {
     try {
@@ -172,6 +204,11 @@ export function TeamTrial() {
             </div>
           );
         })}
+        {teamParam == "61" || teamParam == "71" || teamParam == "81" ? null : (
+          <div className="activityItem resultItem">
+            <p>Avaliação em breve</p>
+          </div>
+        )}
       </div>
     </Container>
   );
