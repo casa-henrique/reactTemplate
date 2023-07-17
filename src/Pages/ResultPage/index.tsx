@@ -4,6 +4,7 @@ import {
   IoMdArrowRoundDown,
   IoMdArrowRoundUp,
 } from "react-icons/io";
+import { PdfToHtml } from "../../Components/PdfToHtml";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 import { Container } from "./styles";
@@ -75,7 +76,9 @@ export function ResultPage() {
       </button>
 
       <div className="iframeTest">
-        <iframe src={resultList?.documentLink} />
+        {resultList ? (
+          <PdfToHtml activityLink={resultList.documentLink} />
+        ) : null}
       </div>
     </Container>
   );

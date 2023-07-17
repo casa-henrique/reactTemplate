@@ -75,7 +75,7 @@ export const Container = styled.div`
     justify-content: center;
 
     > iframe {
-      width: 50%;
+      width: 95%;
       height: 95%;
       border: none;
     }

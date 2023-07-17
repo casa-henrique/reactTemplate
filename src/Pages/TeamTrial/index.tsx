@@ -157,7 +157,7 @@ export function TeamTrial() {
       </div>
 
       <p className="activityTitle">
-        Resultados {schoolName == "maplebear" ? null : "Semestre 1"}
+        Entregas {schoolName == "maplebear" ? null : "Semestre 1"}
       </p>
       <div className="activityWrapper">
         {teamResultList?.map((item: any, index: any) => {

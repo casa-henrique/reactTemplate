@@ -10,7 +10,18 @@ import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 export const PdfToHtml = ({ activityLink }: PdfConverterProps) => {
   const docs = [{ uri: `${activityLink}` }];
 
-  return <DocViewer documents={docs} pluginRenderers={DocViewerRenderers} />;
+  return (
+    <DocViewer
+      documents={docs}
+      config={{
+        header: {
+          disableHeader: true,
+          disableFileName: true,
+        },
+      }}
+      pluginRenderers={DocViewerRenderers}
+    />
+  );
   // const [numPages, setNumPages] = useState<number | null>(null);
   // const [pdfContent, setPdfContent] = useState<string | null>(null);
   // useEffect(() => {
