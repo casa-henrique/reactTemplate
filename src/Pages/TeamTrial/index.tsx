@@ -64,7 +64,6 @@ export function TeamTrial() {
   function enterActivity(name: string) {
     navigate(`/${schoolName}/atividade/${name}`);
   }
-
   function enterTestPage() {
     navigate(`/${schoolName}/avaliacao`);
   }
