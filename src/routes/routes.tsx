@@ -114,6 +114,7 @@ export function Routes() {
         <Route path="/divinomestre/avaliacao" element={<TestPage />} />
 
         <Route path="/israelita/result/:resultId" element={<ResultPage />} />
+        <Route path="/divinomestre/result/:resultId" element={<ResultPage />} />
       </Router>
     </BrowserRouter>
   );
