@@ -75,7 +75,7 @@ export function TeamTrial() {
   console.log(teamResultList);
 
   function listResults() {
-    if (schoolName == "divinomestre") {
+    if (schoolName != "israelita") {
       const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
 
       setTeamResultList(avaliacao);
