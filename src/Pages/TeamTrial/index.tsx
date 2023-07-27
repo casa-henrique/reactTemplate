@@ -210,7 +210,10 @@ export function TeamTrial() {
             </div>
           );
         })}
-        {teamParam == "61" || teamParam == "71" || teamParam == "81" ? null : (
+        {teamParam == "61" ||
+        teamParam == "71" ||
+        teamParam == "81" ||
+        schoolName == "maplebear" ? null : (
           <div className="activityItem resultItem">
             <p>Avaliação em breve</p>
           </div>
