@@ -113,6 +113,7 @@ export function Routes() {
         <Route path="/israelita/avaliacao" element={<TestPage />} />
         <Route path="/divinomestre/avaliacao" element={<TestPage />} />
 
+        <Route path="/maplebear/result/:resultId" element={<ResultPage />} />
         <Route path="/israelita/result/:resultId" element={<ResultPage />} />
         <Route path="/divinomestre/result/:resultId" element={<ResultPage />} />
       </Router>
