@@ -122,26 +122,27 @@ export function ScheduleComponent() {
     <Paper
       sx={[
         {
-          height: "70%",
-          width: "90%",
+          height: "80%",
+          width: "95%",
           position: "relative",
           padding: "0.2rem",
           borderRadius: "8px",
+          border:'solid 1px #E6E6E6',
         },
-        {
-          "&::before": {
-            content: "''",
-            position: "absolute",
-            inset: "0",
-            borderRadius: "8px",
-            padding: "2px",
-            background: "linear-gradient(#1B88EF, #24C07D)",
-            WebkitMask:
-              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);",
-            WebkitMaskComposite: "xor",
-            maskComposite: "exclude",
-          },
-        },
+        // {
+        //   "&::before": {
+        //     content: "''",
+        //     position: "absolute",
+        //     inset: "0",
+        //     borderRadius: "8px",
+        //     padding: "2px",
+        //     background: "linear-gradient(#1B88EF, #24C07D)",
+        //     WebkitMask:
+        //       "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);",
+        //     WebkitMaskComposite: "xor",
+        //     maskComposite: "exclude",
+        //   },
+        // },
       ]}
     >
       <Scheduler data={teamsData} locale={"pt-BR"}>

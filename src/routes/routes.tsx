@@ -7,12 +7,13 @@ import { ResultPage } from "../Pages/ResultPage";
 import { SchoolsHome } from "../Pages/SchoolsHome";
 import { TeamTrial } from "../Pages/TeamTrial";
 import { TestPage } from "../Pages/TestPage";
+import { SelectSchool } from "../Pages/SelectSchool";
 
 export function Routes() {
   return (
     <BrowserRouter>
       <Router>
-        <Route path="/" />
+        <Route path="/" element={ <SelectSchool/>}/>
 
         <Route
           path="/israelita"

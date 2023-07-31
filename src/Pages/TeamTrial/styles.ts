@@ -2,34 +2,102 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  position: relative;
 
-  width: 100vw;
-
-  background-color: var(--text-white);
-
-  margin-bottom: 5rem;
+  width: 100%;
+  height: 87vh;
 
   .trailHeader {
     display: flex;
+    flex-direction: column;
 
-    height: 15%;
-    width: 100%;
+    height: 100%;
+    width: 25%;
+    padding: 2rem 2rem;
 
-    justify-content: center;
     align-items: center;
 
-    padding: 2rem 2rem;
+    background-color: var(--gray-test);
+  }
+
+  .buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     margin-bottom: 2rem;
 
-    background-color: #eee;
+    > button {
+      display: flex;
+      background-color: transparent;
+      padding: 0;
+      color: var(--primary);
 
-    > h1 {
-      color: var(--secondary-lime);
-      font-family: "inter";
+      > svg {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
     }
   }
 
+  .showIcon{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+    top: 1rem;
+    left: 1rem;
+
+    color: var(--primary);
+    background-color: var(--gray-test);
+
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+
+    border-radius: 100%;
+
+    > svg {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+  }
+
+  .infoWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    > div {
+      > p, h2 {
+        font-family: "Poppins";
+        font-weight: bold;
+      }
+
+      > h2 {
+        font-size: 1.5rem;
+        color: var(--secondary-blue);
+      }
+      
+      > p {
+        font-size: 1rem;
+        color: var(--primary);
+      }
+    }
+  }
+
+  .contentWrapper{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+  }
+
+/* 
   .activityWrapper {
     display: flex;
     width: 98vw;
@@ -37,7 +105,7 @@ export const Container = styled.div`
 
     padding: 16px;
     gap: 1rem;
-  }
+  } */
 
   .resultItem {
     justify-content: center !important;
