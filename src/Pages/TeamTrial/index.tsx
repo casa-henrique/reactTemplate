@@ -95,11 +95,7 @@ export function TeamTrial() {
         </div>
         <div>
           <p>Série</p>
-          <h2>{trail?.year}</h2>
-        </div>
-        <div>
-          <p>Trilha</p>
-          <h2>{trailNameByUrl}</h2>
+          <h2>{trail?.year.replaceAll("º Ano", "").concat("º Ano")}</h2>
         </div>
         <div>
           <p>Horário</p>

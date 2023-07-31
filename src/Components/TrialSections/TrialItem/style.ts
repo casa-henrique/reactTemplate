@@ -22,7 +22,6 @@ cursor: pointer;
 > h3 {
     font-family: "Poppins";
     color: var(--primary);
-    text-transform: capitalize;
     text-align: center;
     font-size: 1rem;
     width: 90%;

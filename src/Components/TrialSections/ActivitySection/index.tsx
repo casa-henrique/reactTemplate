@@ -84,18 +84,18 @@ function seasion() {
   console.log(trail, activities, activitiesSeasonOne)
 
     return <Container>
-        <h2>Semestre 1</h2>
+        <h2>Trilha Ciclo 1</h2>
         <div className="trialItemsWrapper">
             {activitiesSeasonOne?.map((item:any, index:any) => {
-                return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "") : item.name} access={item.name} type="activity"/>
+                return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
             })}
         </div>
         
-        <h2>Semestre 2</h2>
+        <h2>Trilha Ciclo 2</h2>
         <div className="trialItemsWrapper">
           {
          activitiesSeasonTwo.length > 0 ? activitiesSeasonTwo.map((item:any, index:any) => {
-          return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "") : item.name} access={item.name} type="activity"/>
+          return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
       }) : <TrialItem title='Em Breve' access=" " type="soon"/>
         }
         </div>

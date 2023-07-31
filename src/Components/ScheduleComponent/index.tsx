@@ -55,9 +55,9 @@ export function ScheduleComponent() {
           })
         }
         variant="contained"
-        sx={{ mt: "1rem", ml: "1rem" }}
+        sx={{ mt: "1rem", ml: "1rem", textTransform: "none" }}
       >
-        Ver Material
+        Ver turma
       </Button>
     </AppointmentTooltip.Content>
   );

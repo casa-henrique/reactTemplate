@@ -36,7 +36,7 @@ export function DashComponent({type}:DashComponentProps) {
             case "avaliation":
                 return "Avaliações"
             case "search":
-                return "Pesquisas"
+                return "Relatório Geral"
             case "presentation":
                 return "Apresentações"
         }
