@@ -13,7 +13,7 @@ export const Container = styled.div`
   .showHeader,
   .hideHeader {
     position: absolute;
-    top: 0.5rem;
+    top: 1.1rem;
     right: 2rem;
 
     background-color: transparent;
@@ -25,20 +25,24 @@ export const Container = styled.div`
     }
   }
 
+
   .hideHeader {
+    top: 3rem;
+    right: 1rem;
     background-color: var(--text-white);
     border-radius: 100%;
     padding: 0.8rem;
+    z-index: 100;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   .activityHeader {
     display: flex;
     position: relative;
     width: 100%;
-    height: 10%;
+    height: 15%;
 
-    background-color: var(--text-white);
-    border-radius: 1rem 1rem 0 0;
+    background-color: var(--primary);
 
     padding: 0 1rem;
 
@@ -61,7 +65,7 @@ export const Container = styled.div`
       text-transform: capitalize;
       font-size: 1.5rem;
       font-weight: bold;
-      color: var(--secondary-blue);
+      color: var(--text-white);
     }
   }
 

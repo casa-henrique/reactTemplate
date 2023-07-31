@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { HomeSection } from "../../Components/HomeSection";
+import { HeroSection } from "../../Components/HeroSection";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { SchoolContainer } from "./styles";
 
@@ -16,7 +16,7 @@ export function SchoolsHome({ schoolNameUrl }: SchoolsHomeProps) {
 
   return (
     <SchoolContainer>
-      <HomeSection />
+      <HeroSection />
     </SchoolContainer>
   );
 }

@@ -1,10 +1,15 @@
-import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import iconImage from "../../assets/images/Logos/icon-codifica-clean.svg";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 import { Container } from "./styles";
+import { IoClose, IoList } from "react-icons/io5"
+import { IoMdArrowRoundBack, } from "react-icons/io"
+import { TrialMenu } from "../../Components/TrialSections/TrialMenu";
+import { ActivitySection } from "../../Components/TrialSections/ActivitySection";
+import { ResultsSection } from "../../Components/TrialSections/ResultsSection";
+import { PresentationSection } from "../../Components/TrialSections/PresentationSection";
+import { SearchSection } from "../../Components/TrialSections/SearchSection";
 
 interface TrailProps {
   activity: string[];
@@ -16,22 +21,11 @@ interface TrailProps {
   year: string;
 }
 
-interface ResultProps {
-  name: string;
-  team: string;
-  documentLink: string;
-  type: string;
-}
-
 export function TeamTrial() {
+  const [showInfos, setShowInfos] = useState(true)
+  const [menuSelected, setMenuSelected] = useState("activity")
   const [trail, setTrail] = useState<TrailProps | undefined>();
-  const [resultList, setResultList] = useState<ResultProps[] | undefined>();
-  const [teamResultList, setTeamResultList] = useState<
-    ResultProps[] | undefined
-  >();
-  const navigate = useNavigate();
-  const { schoolName } = useSchoolNameContext();
-
+  const [team, setTeam] = useState<any>()
   const queryParameters = new URLSearchParams(window.location.search);
   const teamParam = queryParameters.get("team");
 
@@ -44,70 +38,15 @@ export function TeamTrial() {
     .replaceAll("%C2%BA", "º")
     .replaceAll("%C3%AD", "í");
 
+    function goBack() {
+      history.back();
+    }
+  
   function trailNameFilter(data: any) {
     return trailNameByUrl == data.name;
   }
-
-  function resultTeamSevenFilter(data: any) {
-    return "7" == data.team;
-  }
-  function resultTeamSixFilter(data: any) {
-    return "6" == data.team;
-  }
-  function resultTeamEightFilter(data: any) {
-    return "8" == data.team;
-  }
-  function resultTeamAvaliationFilter(data: any) {
-    return teamParam?.replaceAll("°", "") == data.team;
-  }
-
-  function enterActivity(name: string) {
-    navigate(`/${schoolName}/atividade/${name}`);
-  }
-  function enterTestPage() {
-    navigate(`/${schoolName}/avaliacao`);
-  }
-  function enterResultPage(id: string) {
-    navigate(`/${schoolName}/result/${id}`);
-  }
-
-  console.log(teamParam, schoolName);
-  console.log(teamResultList);
-
-  function listResults() {
-    if (schoolName == "divinomestre") {
-      const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
-
-      setTeamResultList(avaliacao);
-    } else {
-      if (trailNameByUrl == "7º ano E.F.") {
-        let teamResults = resultList?.filter(resultTeamSevenFilter);
-        const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
-
-        if (teamParam == "71") {
-          teamResults?.push(avaliacao[0]);
-        }
-
-        setTeamResultList(teamResults);
-      }
-      if (trailNameByUrl == "6º ano E.F") {
-        const teamResults = resultList?.filter(resultTeamSixFilter);
-        const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
-
-        if (teamParam == "61") {
-          teamResults?.push(avaliacao[0]);
-        }
-        setTeamResultList(teamResults);
-      } else if (trailNameByUrl == "8º ano E.F") {
-        const teamResults = resultList?.filter(resultTeamEightFilter);
-        const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
-
-        if (teamParam == "81") {
-          teamResults?.push(avaliacao[0]);
-        }
-        setTeamResultList(teamResults);
-      }
-    }
+  function teamNameFilter(data: any) {
+    return teamParam == data.name;
   }
 
   const list_trail = async () => {
@@ -122,11 +61,13 @@ export function TeamTrial() {
     }
   };
 
-  const list_results = async () => {
+  const list_team = async () => {
     try {
-      const response = await api.get("/result");
+      const response = await api.get("/team");
+      const filterTeam = response.data.filter(teamNameFilter);
+      const thisTeam = filterTeam[0];
 
-      await setResultList(response.data);
+      setTeam(thisTeam);
     } catch (err) {
       console.log(err);
     }
@@ -135,86 +76,49 @@ export function TeamTrial() {
   useEffect(() => {
     list_trail();
   }, []);
-
   useEffect(() => {
-    list_results();
+    list_team();
   }, []);
-
-  useEffect(() => {
-    listResults();
-  }, [resultList]);
 
   return (
     <Container>
-      <div className="trailHeader">
-        <h1>{trailNameByUrl}</h1>
-      </div>
-
-      <p className="activityTitle">
-        Atividades {schoolName == "maplebear" ? null : "Semestre 1"}
-      </p>
-      <div className="activityWrapper">
-        {trail?.activity.map((item, index) => {
-          return (
-            <div
-              className="activityItem"
-              key={index}
-              onClick={() => enterActivity(item)}
-            >
-              <div>
-                <img src={iconImage} />
-              </div>
-              <p>{item.replaceAll("MP", "")}</p>
-              <Button>Acessar</Button>
-            </div>
-          );
-        })}
-      </div>
-
-      {schoolName == "maplebear" ? null : (
-        <>
-          <p className="activityTitle">Atividades Semestre 2</p>
-          <div className="activityWrapper">
-            <div className="activityItemSoon">
-              <p>Em Breve</p>
-            </div>
-          </div>
-        </>
-      )}
-
-      <p className="activityTitle">
-        Avaliação {schoolName == "maplebear" ? null : "Semestre 1"}
-      </p>
-      <div className="activityWrapper">
-        <div
-          onClick={() => enterTestPage()}
-          className="activityItemSoon testItemSchool"
-        >
-          <Button>Acessar</Button>
+      {showInfos ? <div className="trailHeader">
+        <div className="buttonsWrapper">
+          <button onClick={goBack}><IoMdArrowRoundBack /></button>
+          <button onClick={() => setShowInfos(!showInfos)}><IoClose/></button>
         </div>
-      </div>
 
-      <p className="activityTitle">
-        Entregas {schoolName == "maplebear" ? null : "Semestre 1"}
-      </p>
-      <div className="activityWrapper">
-        {teamResultList?.map((item: any, index: any) => {
-          return (
-            <div
-              className="activityItem resultItem"
-              key={index}
-              onClick={() => enterResultPage(item.id)}
-            >
-              <p>{item.name}</p>
-              <Button>Acessar</Button>
-            </div>
-          );
-        })}
-        {teamParam == "61" || teamParam == "71" || teamParam == "81" ? null : (
-          <div className="activityItem resultItem">
-            <p>Avaliação em breve</p>
-          </div>
-        )}
+      <div className="infoWrapper">
+        <div>
+          <p>Turma</p>
+          <h2>{teamParam}</h2>
+        </div>
+        <div>
+          <p>Série</p>
+          <h2>{trail?.year}</h2>
+        </div>
+        <div>
+          <p>Trilha</p>
+          <h2>{trailNameByUrl}</h2>
+        </div>
+        <div>
+          <p>Horário</p>
+          {team ? <h2>{`${team?.startHour.slice(11)} - ${team?.endHour.slice(11)}`}</h2> : null}
+        </div>
+        {/* <div className="infoWrapper">
+          <p>Alunos</p>
+          <h2>{trailNameByUrl}</h2>
+        </div> */}
+        </div>
+      </div> : <button className="showIcon" onClick={() => setShowInfos(!showInfos)}><IoList /></button>}
+      
+      <div className="contentWrapper">
+        <TrialMenu selected={menuSelected} changeSelection={setMenuSelected}/>
+
+        {menuSelected == "activity" ? <ActivitySection/> : null}
+        {menuSelected == "result" ? <ResultsSection/>  : null}
+        {menuSelected == "presentations" ? <PresentationSection/> : null}
+        {menuSelected == "searchs" ? <SearchSection/>  : null}
       </div>
     </Container>
   );

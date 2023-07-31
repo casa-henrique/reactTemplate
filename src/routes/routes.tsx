@@ -7,12 +7,13 @@ import { ResultPage } from "../Pages/ResultPage";
 import { SchoolsHome } from "../Pages/SchoolsHome";
 import { TeamTrial } from "../Pages/TeamTrial";
 import { TestPage } from "../Pages/TestPage";
+import { SelectSchool } from "../Pages/SelectSchool";
 
 export function Routes() {
   return (
     <BrowserRouter>
       <Router>
-        <Route path="/" />
+        <Route path="/" element={ <SelectSchool/>}/>
 
         <Route
           path="/israelita"
@@ -113,6 +114,7 @@ export function Routes() {
         <Route path="/israelita/avaliacao" element={<TestPage />} />
         <Route path="/divinomestre/avaliacao" element={<TestPage />} />
 
+        <Route path="/maplebear/result/:resultId" element={<ResultPage />} />
         <Route path="/israelita/result/:resultId" element={<ResultPage />} />
         <Route path="/divinomestre/result/:resultId" element={<ResultPage />} />
       </Router>
