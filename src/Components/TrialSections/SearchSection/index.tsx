@@ -130,7 +130,7 @@ export function SearchSection() {    const [resultList, setResultList] = useStat
   };
 
   function avaliationFilter() {
-    const data = teamResultList?.filter((item) => "jornada" == item.type || "relatorio" == item.type)
+    const data = teamResultList?.filter((item) => "search" == item.type)
     
     if(data) {
       setAvaliation(data)
@@ -155,13 +155,17 @@ export function SearchSection() {    const [resultList, setResultList] = useStat
                 }, [teamResultList]);
 
     return <Container>
-        <h2>Pesquisas</h2>
+        <h2>Pesquisas Ciclo 1</h2>
         <div className="trialItemsWrapper">
             {avaliation.length > 0 ? avaliation?.map((item: any, index: any) => {
     return (<TrialItem key={index} title={item.name} access={item.id} type="presentations"/>   
     );
   })  : <TrialItem title="Em breve" access=" " type="soon"/> }
              
+        </div>
+        <h2>Pesquisas Ciclo 2</h2>
+        <div className="trialItemsWrapper">
+            <TrialItem title="Em breve" access=" " type="soon"/>
         </div>
     </Container>
 }

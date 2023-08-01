@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSchoolNameContext } from "../../../hooks/useSchoolNameContext";
 import { TrialItem } from "../TrialItem"
-import {Container} from "./styles"
+import { Container } from "./styles"
 import { api } from "../../../lib/api";
 
 interface ResultProps {
@@ -21,7 +21,7 @@ interface ResultProps {
     year: string;
   }
 
-export function PresentationSection() {    const [resultList, setResultList] = useState<ResultProps[] | undefined>();
+export function ReportSection() {    const [resultList, setResultList] = useState<ResultProps[] | undefined>();
     const [teamResultList, setTeamResultList] = useState<
     ResultProps[] | undefined
   >();
@@ -130,7 +130,7 @@ export function PresentationSection() {    const [resultList, setResultList] = u
   };
 
   function avaliationFilter() {
-    const data = teamResultList?.filter((item:any) => "apresentacao" == item.type || "jornada" == item.type)
+    const data = teamResultList?.filter((item:any) => "relatorio" == item.type)
 
     if(data) {
       setAvaliation(data)
@@ -155,7 +155,7 @@ export function PresentationSection() {    const [resultList, setResultList] = u
                 }, [teamResultList]);
 
     return <Container>
-        <h2>Apresentações Ciclo 1</h2>
+        <h2>Relatórios Ciclo 1</h2>
         <div className="trialItemsWrapper">
             {avaliation.length > 0 ? avaliation?.map((item: any, index: any) => {
     return (<TrialItem key={index} title={item.name} access={item.id} type="presentations"/>   
@@ -163,10 +163,10 @@ export function PresentationSection() {    const [resultList, setResultList] = u
   })  : <TrialItem title="Em breve" access=" " type="soon"/> }
              
         </div>
-        
-        <h2>Apresentações Ciclo 2</h2>
+
+        <h2>Relatórios Ciclo 2</h2>
         <div className="trialItemsWrapper">
-            <TrialItem title="Em breve" access=" " type="soon"/>              
+          <TrialItem title="Em breve" access=" " type="soon"/>
         </div>
     </Container>
 }

@@ -10,6 +10,7 @@ import { ActivitySection } from "../../Components/TrialSections/ActivitySection"
 import { ResultsSection } from "../../Components/TrialSections/ResultsSection";
 import { PresentationSection } from "../../Components/TrialSections/PresentationSection";
 import { SearchSection } from "../../Components/TrialSections/SearchSection";
+import { ReportSection } from "../../Components/TrialSections/ReportSection";
 
 interface TrailProps {
   activity: string[];
@@ -94,7 +95,7 @@ export function TeamTrial() {
           <h2>{teamParam}</h2>
         </div>
         <div>
-          <p>Série</p>
+          <p>Ano letivo</p>
           <h2>{trail?.year.replaceAll("º Ano", "").concat("º Ano")}</h2>
         </div>
         <div>
@@ -111,10 +112,11 @@ export function TeamTrial() {
       <div className="contentWrapper">
         <TrialMenu selected={menuSelected} changeSelection={setMenuSelected}/>
 
-        {menuSelected == "activity" ? <ActivitySection/> : null}
-        {menuSelected == "result" ? <ResultsSection/>  : null}
+        {menuSelected == "activity" ? <ActivitySection /> : null}
+        {menuSelected == "result" ? <ResultsSection />  : null}
+        {menuSelected == "report" ? <ReportSection />  : null}
         {menuSelected == "presentations" ? <PresentationSection/> : null}
-        {menuSelected == "searchs" ? <SearchSection/>  : null}
+        {menuSelected == "searchs" ? <SearchSection />  : null}
       </div>
     </Container>
   );

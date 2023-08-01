@@ -42,6 +42,10 @@ export function Login() {
     }
   };
 
+  const changeSchool= () => {
+    navigate(`/`);
+  }
+
   return (
     <Container>
       <section className="leftSection">
@@ -70,7 +74,10 @@ export function Login() {
             placeholder="Senha"
             onChange={(e) => setUserPassword(e.target.value)}
           />
-          <button onClick={handleSubmitLogin}>Acessar</button>
+          <div className="buttonsWrapper">
+            <button onClick={handleSubmitLogin}>Acessar</button>
+            <button onClick={changeSchool} className="backButton">Voltar</button>
+          </div>
           <p>
             Não possui cadastro? <a href="mailto:barbarabatistuzzo@codificaedu.com.br">clique aqui</a>
           </p>

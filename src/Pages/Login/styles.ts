@@ -83,4 +83,22 @@ export const LoginForm = styled.form`
   > button {
     width: 90%;
   }
+
+  .buttonsWrapper{
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+
+    >button {
+      width: 50%;
+      font-family:"Poppins";
+      font-weight:bold;
+    }
+  }
+
+  .backButton {
+    background-color:transparent;
+    border:2px solid var(--primary);
+    color:var(--primary);
+  }
 `;

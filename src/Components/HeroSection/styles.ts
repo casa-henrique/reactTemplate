@@ -45,7 +45,26 @@ export const Content = styled.main`
     }
   }
 
-  > a {
-    width: 5rem;
+    .buttonsWrapper{
+    display: flex;
+    align-items:center;
+    gap: 2rem;
+
+    > a {
+      width:35%;
+    }
+
+    > a > button {
+      width:100%;
+      height:100%;
+      font-family:"Poppins";
+      font-weight:bold;
+    }
+  }
+
+  .backButton {
+    background-color:transparent;
+    border:2px solid var(--primary);
+    color:var(--primary);
   }
 `;

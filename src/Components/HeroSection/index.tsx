@@ -13,9 +13,15 @@ export function HeroSection() {
 
         <p>Trilha formativa de Educação Tecnológica</p>
 
+
+<div className="buttonsWrapper">
         <a href={`/${schoolName.toLocaleLowerCase().replaceAll(" ", "")}/login`}>
           <button>Acessar</button>
         </a>
+        <a href="/" >
+          <button className="backButton">Voltar</button>
+        </a>
+</div>
       </Content>
     </Container>
   );

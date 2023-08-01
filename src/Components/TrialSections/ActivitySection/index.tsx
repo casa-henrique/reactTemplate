@@ -87,7 +87,7 @@ function seasion() {
         <h2>Trilha Ciclo 1</h2>
         <div className="trialItemsWrapper">
             {activitiesSeasonOne?.map((item:any, index:any) => {
-                return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
+                return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de Aula" && "Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
             })}
         </div>
         
@@ -95,9 +95,10 @@ function seasion() {
         <div className="trialItemsWrapper">
           {
          activitiesSeasonTwo.length > 0 ? activitiesSeasonTwo.map((item:any, index:any) => {
-          return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
-      }) : <TrialItem title='Em Breve' access=" " type="soon"/>
+          return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de Aula" && "Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
+      }) : <TrialItem title='Em breve' access=" " type="soon"/>
         }
+        <TrialItem title='EM BREVE: Atividade secundária mundo e cultura digital' access=" " type="soon"/>
         </div>
     </Container>
 }

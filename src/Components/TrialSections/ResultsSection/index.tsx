@@ -160,7 +160,7 @@ console.log(avaliation)
     return <Container>
         <h2>Avaliações</h2>
         <div className="trialItemsWrapper">
-            <TrialItem title={schoolName == "maplebear" ? "Avaliação" : "Semestre 1"} access="" type="result"/>   
+            <TrialItem title={schoolName == "maplebear" ? "Avaliação" : "Ciclo 1"} access="" type="result"/>   
         </div>
         <h2>Entregas</h2>
         <div className="trialItemsWrapper">
