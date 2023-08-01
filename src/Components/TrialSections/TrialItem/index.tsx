@@ -20,12 +20,14 @@ export function TrialItem({title, access, detail, type}:TrialItemProps) {
             navigate(`/${schoolName}/result/${access}`);
         } if (type == "result") {
             navigate(`/${schoolName}/avaliacao`);
+        } if (type == "soon") {
+            return null
         }
     }
 
    return <Container onClick={() => enterActivity(access)}>
         <h3>{title}</h3>
-         {type == "soon" ? null : <button>Acessar</button>}
+         {type == "soon" ? <button className="soonItem">Em breve</button> : <button>Acessar</button>}
         {detail ? <p>{detail}</p> : null}
     </Container>
 }

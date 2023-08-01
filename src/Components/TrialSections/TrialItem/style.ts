@@ -43,4 +43,9 @@ cursor: pointer;
     font-weight: bold;
     font-size: 0.8rem;
 }
+
+.soonItem {
+    background-color: #757575;
+    color: #c4c4c4;
+}
 `;

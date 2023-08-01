@@ -155,7 +155,7 @@ export function SearchSection() {    const [resultList, setResultList] = useStat
                 }, [teamResultList]);
 
     return <Container>
-        <h2>Pesquisas Ciclo 1</h2>
+        <h2>Pesquisas</h2>
         <div className="trialItemsWrapper">
             {avaliation.length > 0 ? avaliation?.map((item: any, index: any) => {
     return (<TrialItem key={index} title={item.name} access={item.id} type="presentations"/>   
@@ -163,7 +163,7 @@ export function SearchSection() {    const [resultList, setResultList] = useStat
   })  : <TrialItem title="Em breve" access=" " type="soon"/> }
              
         </div>
-        <h2>Pesquisas Ciclo 2</h2>
+        <h2>Resultados</h2>
         <div className="trialItemsWrapper">
             <TrialItem title="Em breve" access=" " type="soon"/>
         </div>
