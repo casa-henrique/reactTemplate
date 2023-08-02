@@ -7,15 +7,16 @@ interface TrialItemProps {
     access: string;
     detail?: string;
     type: string;
+    id?: string;
 }
 
-export function TrialItem({title, access, detail, type}:TrialItemProps) {
+export function TrialItem({title, access, detail, type, id}:TrialItemProps) {
     const navigate = useNavigate();
     const { schoolName } = useSchoolNameContext();
 
     function enterActivity(name: string) {
         if(type == "activity") {
-            navigate(`/${schoolName}/atividade/${name}`);
+            navigate(`/${schoolName}/atividade/${id}`);
         } if (type == "searchs" || type == 'presentations') {
             navigate(`/${schoolName}/result/${access}`);
         } if (type == "result") {

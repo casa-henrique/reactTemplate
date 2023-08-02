@@ -21,7 +21,7 @@ export function Activity() {
   const [activity, setActivity] = useState<ActivityProps>();
   const [toggleHeader, setToggleHeader] = useState(false);
   const activityNameByUrl = window.location.pathname.replace("/atividade/", "");
-  const activityName = activityNameByUrl
+  const activityId = activityNameByUrl
     .replaceAll("%20", " ")
     .replaceAll("%C2%BA", "º")
     .replace("/maplebear", "")
@@ -33,7 +33,7 @@ export function Activity() {
   }
 
   function actualActivityFilter(data: any) {
-    return activityName === data.name;
+    return activityId === data.id;
   }
 
   const list_activity = async () => {

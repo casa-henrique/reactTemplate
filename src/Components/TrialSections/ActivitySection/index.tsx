@@ -87,7 +87,7 @@ function seasion() {
         <h2>Trilha Ciclo 1</h2>
         <div className="trialItemsWrapper">
             {activitiesSeasonOne?.map((item:any, index:any) => {
-                return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de Aula" && "Plano de aula", "Atividade principal") : item.name.replaceAll("Plano de aula", "Atividade principal")} access={item.name} type="activity"/>
+              return <TrialItem key={index} id={item.id} title={item.main ? 'Atividade principal' : item.name} access={item.name} type="activity"/>
             })}
         </div>
         
@@ -95,7 +95,7 @@ function seasion() {
         <div className="trialItemsWrapper">
           {
          activitiesSeasonTwo.length > 0 ? activitiesSeasonTwo.map((item:any, index:any) => {
-          return <TrialItem key={index} title={schoolName == "divinomestre" ? item.name.replaceAll("MP", "").replaceAll("Plano de Aula" && "Plano de aula", "Atividade principal").replaceAll("Atividade secundaria Apresentacao", "Atividade secundária: Apresentação") : item.name.replaceAll("Plano de aula", "Atividade principal").replaceAll("Atividade secundaria Apresentacao", "Atividade secundária: Apresentação")} access={item.name} type="activity"/>
+          return <TrialItem key={index} id={item.id} title={item.main ? 'Atividade principal' : item.name.replaceAll("Atividade secundaria Apresentacao", "Atividade secundária: Apresentação")} access={item.name} type="activity"/>
       }) : <TrialItem title='Em breve' access="" type="soon"/>
         }
         <TrialItem title='Atividade secundária: Mundo e cultura digital' access="" type="soon"/>
