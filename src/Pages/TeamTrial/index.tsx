@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
 import { api } from "../../lib/api";
 import { Container } from "./styles";
 import { IoClose, IoList } from "react-icons/io5"
@@ -11,6 +9,7 @@ import { ResultsSection } from "../../Components/TrialSections/ResultsSection";
 import { PresentationSection } from "../../Components/TrialSections/PresentationSection";
 import { SearchSection } from "../../Components/TrialSections/SearchSection";
 import { ReportSection } from "../../Components/TrialSections/ReportSection";
+import { useTrialMenuSelectContext } from "../../hooks/useTrialMenuSelectedContext";
 
 interface TrailProps {
   activity: string[];
@@ -24,11 +23,11 @@ interface TrailProps {
 
 export function TeamTrial() {
   const [showInfos, setShowInfos] = useState(true)
-  const [menuSelected, setMenuSelected] = useState("activity")
   const [trail, setTrail] = useState<TrailProps | undefined>();
   const [team, setTeam] = useState<any>()
   const queryParameters = new URLSearchParams(window.location.search);
   const teamParam = queryParameters.get("team");
+  const {menuSelect} = useTrialMenuSelectContext()
 
   const trailNameByUrl = window.location.pathname
     .replace("/trail/", "")
@@ -102,21 +101,17 @@ export function TeamTrial() {
           <p>Horário</p>
           {team ? <h2>{`${team?.startHour.slice(11)} - ${team?.endHour.slice(11)}`}</h2> : null}
         </div>
-        {/* <div className="infoWrapper">
-          <p>Alunos</p>
-          <h2>{trailNameByUrl}</h2>
-        </div> */}
         </div>
       </div> : <button className="showIcon" onClick={() => setShowInfos(!showInfos)}><IoList /></button>}
       
       <div className="contentWrapper">
-        <TrialMenu selected={menuSelected} changeSelection={setMenuSelected}/>
+        <TrialMenu />
 
-        {menuSelected == "activity" ? <ActivitySection /> : null}
-        {menuSelected == "result" ? <ResultsSection />  : null}
-        {menuSelected == "report" ? <ReportSection />  : null}
-        {menuSelected == "presentations" ? <PresentationSection/> : null}
-        {menuSelected == "searchs" ? <SearchSection />  : null}
+        {menuSelect == "activity" ? <ActivitySection /> : null}
+        {menuSelect == "result" ? <ResultsSection />  : null}
+        {menuSelect == "report" ? <ReportSection />  : null}
+        {menuSelect == "presentations" ? <PresentationSection/> : null}
+        {menuSelect == "searchs" ? <SearchSection />  : null}
       </div>
     </Container>
   );
