@@ -1,4 +1,4 @@
-import { Container } from "./styles"
+import { Container, Status } from "./styles"
 import { SectionHeader } from "../sectionHeader"
 import { useEffect, useState } from "react"
 import { api } from "../../../lib/api"
@@ -122,10 +122,10 @@ export function Dashboard () {
                             return <tr key={index}>
                             <td onClick={() => goTeamPage(item.team)} className="teamInfo">{item.team}</td>
     
-                            <td onClick={() => goReportPage(item.team)} className="borderLeft">{item.cicleOne[0]}</td>
-                            <td onClick={() => goPresentationsPage(item.team)}>{item.cicleOne[1]}</td>
-                            <td onClick={() => goSearchPage(item.team)}>{item.cicleOne[2]}</td>
-                            <td onClick={() => goResultPage(item.team)}>{item.cicleOne[3]}</td>
+                            <Status colorStatus={item.cicleOne[0]} onClick={() => goReportPage(item.team)} className="borderLeft">{item.cicleOne[0]}</Status>
+                            <Status colorStatus={item.cicleOne[1].replaceAll(" ", "")} onClick={() => goPresentationsPage(item.team)}>{item.cicleOne[1]}</Status>
+                            <Status colorStatus={item.cicleOne[2].replaceAll(" ", "")} onClick={() => goSearchPage(item.team)}>{item.cicleOne[2]}</Status>
+                            <Status colorStatus={item.cicleOne[3].replaceAll(" ", "")} onClick={() => goResultPage(item.team)}>{item.cicleOne[3]}</Status>
     
                             <td onClick={() => goReportPage(item.team)} className="borderLeft">{item.cicleTwo[0]}</td>
                             <td onClick={() => goPresentationsPage(item.team)}>{item.cicleTwo[1]}</td>

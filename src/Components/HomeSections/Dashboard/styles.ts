@@ -137,3 +137,16 @@ padding: 1.5rem 0;
 width: 7.45rem;
 }
 `;
+
+interface StatusProps {
+    colorStatus: "Finalizado" | "Emandamento";
+}
+
+const colors = {
+  Finalizado: "#24C07D",
+  Emandamento: "#E98C00",
+};
+
+export const Status = styled.td<StatusProps>`
+    color: ${(props) => colors[props.colorStatus]} !important;
+`
