@@ -14,7 +14,7 @@ export function DevWarning() {
   } else {
     return (
       <Warning>
-        <p>O sistema está passando por alterações, o que pode ocasionar em erros durante seu uso. Caso você note um erro peço que me envie um print neste <a href="mailto:henriquecasagrande@codificaedu.com.br" target="_blank">link</a></p>
+        <p>O sistema está passando por alterações, o que pode ocasionar em erros durante seu uso. Caso você note um erro peço que nos envie um print neste <a href="mailto:henriquecasagrande@codificaedu.com.br" target="_blank">link</a></p>
         <button onClick={() => setDisabled(true)}>Fechar aviso</button>
       </Warning>
     );

@@ -64,6 +64,10 @@ export function Dashboard () {
     setMenuSelect('presentations');
     await filter_teams(team);
   }
+  const goSearchPage = async (team:any) => {
+    setMenuSelect('searchs');
+    await filter_teams(team);
+  }
 
   useEffect(() => {
     get_dashInfos()
@@ -105,12 +109,12 @@ export function Dashboard () {
 
                     <th className="borderLeft">Relatorio</th>
                     <th>Apresentação</th>
-                    <th>Jornada</th>
+                    <th>Pesquisa</th>
                     <th>Avaliação</th>
                     
                     <th className="borderLeft">Relatorio</th>
                     <th>Apresentação</th>
-                    <th>Jornada</th>
+                    <th>Pesquisa</th>
                     <th>Avaliação</th>
                 </thead>
                 {dashInfos ? <tbody>
@@ -120,12 +124,12 @@ export function Dashboard () {
     
                             <td onClick={() => goReportPage(item.team)} className="borderLeft">{item.cicleOne[0]}</td>
                             <td onClick={() => goPresentationsPage(item.team)}>{item.cicleOne[1]}</td>
-                            <td onClick={() => goPresentationsPage(item.team)}>{item.cicleOne[2]}</td>
+                            <td onClick={() => goSearchPage(item.team)}>{item.cicleOne[2]}</td>
                             <td onClick={() => goResultPage(item.team)}>{item.cicleOne[3]}</td>
     
                             <td onClick={() => goReportPage(item.team)} className="borderLeft">{item.cicleTwo[0]}</td>
                             <td onClick={() => goPresentationsPage(item.team)}>{item.cicleTwo[1]}</td>
-                            <td onClick={() => goPresentationsPage(item.team)}>{item.cicleTwo[2]}</td>
+                            <td onClick={() => goSearchPage(item.team)}>{item.cicleTwo[2]}</td>
                             <td onClick={() => goResultPage(item.team)}>{item.cicleTwo[3]}</td>
                         </tr>
                         })}
