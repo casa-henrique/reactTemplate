@@ -8,7 +8,7 @@ export function SelectSchool() {
     return <Container>
         <img src={LogoCodifica}></img>
 
-        <p>Acesse Sua plataforma:</p>
+        <p>Acesse sua plataforma:</p>
 
         <div>
             <a href="/israelita">

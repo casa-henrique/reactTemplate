@@ -26,9 +26,14 @@ export function Dashboard () {
   };
 
   const dashInfosFilter = () => {
-    const filteredData = allDashInfos.filter((item:any) => userInfos?.user.name == item.teacher)
-
-    setDashInfos(filteredData)
+    if(userInfos?.user.name == "Luana Cavalcanti") {
+      const filteredDataIsra = allDashInfos.filter((item:any) => "Tauana Rosa" == item.teacher)
+      setDashInfos(filteredDataIsra)
+    }
+    else {
+      const filteredData = allDashInfos.filter((item:any) => userInfos?.user.name == item.teacher)
+      setDashInfos(filteredData)
+    }
   }
 
   const get_teams = async () => {
@@ -107,12 +112,12 @@ export function Dashboard () {
                 <thead>
                     <th className="teamInfo teamInfoText">Turma</th>
 
-                    <th className="borderLeft">Relatorio</th>
+                    <th className="borderLeft">Relatório</th>
                     <th>Apresentação</th>
                     <th>Pesquisa</th>
                     <th>Avaliação</th>
                     
-                    <th className="borderLeft">Relatorio</th>
+                    <th className="borderLeft">Relatório</th>
                     <th>Apresentação</th>
                     <th>Pesquisa</th>
                     <th>Avaliação</th>

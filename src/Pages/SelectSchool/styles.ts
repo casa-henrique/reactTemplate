@@ -49,6 +49,8 @@ background-color:var(--primary);
         
         > img {
             width: 50%;
+          object-fit: contain;
+          aspect-ratio: 4/4;
         }
     }
 }
