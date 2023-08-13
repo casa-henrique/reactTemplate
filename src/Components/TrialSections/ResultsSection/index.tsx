@@ -59,9 +59,9 @@ export function ResultsSection() {
         return "8" == data.team;
       }
       function resultTeamAvaliationFilter(data: any) {
-        return teamParam?.replaceAll("°", "") == data.team;
+        return teamParam?.replaceAll("°", "").replaceAll(" ", "") == data.team;
       }
-
+console.log(teamParam)
     function listResults() {
           if (schoolName == "divinomestre" || schoolName == "maplebear") {
             const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
@@ -74,12 +74,13 @@ export function ResultsSection() {
       
               if (teamParam == "71") {
                 teamResults?.push(avaliacao[0]);
-              } else if (teamParam == "72" || teamParam == "73") {
+              } 
+              if (teamParam == "72" || teamParam == "73") {
                 const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
+              } else {
+                setTeamResultList(teamResults);
               }
-      
-              setTeamResultList(teamResults);
             }
             if (trailNameByUrl == "6º ano E.F") {
               const teamResults = resultList?.filter(resultTeamSixFilter);
@@ -87,11 +88,14 @@ export function ResultsSection() {
       
               if (teamParam == "61") {
                 teamResults?.push(avaliacao[0]);
-              } else if (teamParam == "62" || teamParam == "63") {
+              }
+              if (teamParam == "62" || teamParam == "63") {
                 const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
+              } else {
+                setTeamResultList(teamResults);
               }
-              setTeamResultList(teamResults);
+
             } else if (trailNameByUrl == "8º ano E.F") {
               const teamResults = resultList?.filter(resultTeamEightFilter);
               const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
