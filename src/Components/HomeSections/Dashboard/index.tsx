@@ -28,11 +28,13 @@ export function Dashboard () {
   const dashInfosFilter = () => {
     if(userInfos?.user.name == "Luana Cavalcanti") {
       const filteredDataIsra = allDashInfos.filter((item:any) => "Tauana Rosa" == item.teacher)
-      setDashInfos(filteredDataIsra)
+      const orderData = filteredDataIsra.sort((a:any,b:any) => a.team.localeCompare(b.team))
+      setDashInfos(orderData)
     }
     else {
       const filteredData = allDashInfos.filter((item:any) => userInfos?.user.name == item.teacher)
-      setDashInfos(filteredData)
+      const orderData = filteredData.sort((a:any,b:any) => a.team.localeCompare(b.team))
+      setDashInfos(orderData)
     }
   }
 
