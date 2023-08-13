@@ -96,17 +96,20 @@ console.log(teamParam)
                 setTeamResultList(teamResults);
               }
 
-            } else if (trailNameByUrl == "8º ano E.F") {
+            }
+             if (trailNameByUrl == "8º ano E.F") {
               const teamResults = resultList?.filter(resultTeamEightFilter);
               const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
       
               if (teamParam == "81") {
                 teamResults?.push(avaliacao[0]);
-              } else if (teamParam == "82" || teamParam == "83") {
+              } 
+              if (teamParam == "82" || teamParam == "83") {
                 const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
+              } else {
+                setTeamResultList(teamResults);
               }
-              setTeamResultList(teamResults);
             }
           }
         }
