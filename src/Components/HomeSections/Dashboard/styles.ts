@@ -13,7 +13,7 @@ padding: 1.5rem 0;
     display: flex;
     flex-direction: column;
 
-    width: 95%;
+    width: 98%;
     height: 80%;
 
     margin-top: 2rem;
@@ -107,6 +107,8 @@ padding: 1.5rem 0;
 .teamInfo {
     width: 4.5rem;
     color: var(--primary);
+    justify-content: flex-start;
+    padding-left: 0.8rem;
 }
 .teamInfoText {
     color: white;
@@ -134,7 +136,7 @@ padding: 1.5rem 0;
     }
 }
 .hiddenSpace {
-width: 7.45rem;
+width: 7.8rem;
 }
 `;
 
