@@ -69,11 +69,13 @@ export function ResultsSection() {
             setTeamResultList(avaliacao);
           } else {
             if (trailNameByUrl == "7º ano E.F.") {
-              let teamResults = resultList?.filter(resultTeamSevenFilter);
+              const teamResults = resultList?.filter(resultTeamSevenFilter);
               const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
       
               if (teamParam == "71") {
                 teamResults?.push(avaliacao[0]);
+              } else if (teamParam == "72" || teamParam == "73") {
+                setTeamResultList(avaliacao)
               }
       
               setTeamResultList(teamResults);
@@ -84,6 +86,8 @@ export function ResultsSection() {
       
               if (teamParam == "61") {
                 teamResults?.push(avaliacao[0]);
+              } else if (teamParam == "62" || teamParam == "63") {
+                setTeamResultList(avaliacao)
               }
               setTeamResultList(teamResults);
             } else if (trailNameByUrl == "8º ano E.F") {
@@ -92,6 +96,8 @@ export function ResultsSection() {
       
               if (teamParam == "81") {
                 teamResults?.push(avaliacao[0]);
+              } else if (teamParam == "82" || teamParam == "83") {
+                setTeamResultList(avaliacao)
               }
               setTeamResultList(teamResults);
             }
