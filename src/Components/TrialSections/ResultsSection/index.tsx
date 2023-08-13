@@ -75,6 +75,7 @@ export function ResultsSection() {
               if (teamParam == "71") {
                 teamResults?.push(avaliacao[0]);
               } else if (teamParam == "72" || teamParam == "73") {
+                const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
               }
       
@@ -87,6 +88,7 @@ export function ResultsSection() {
               if (teamParam == "61") {
                 teamResults?.push(avaliacao[0]);
               } else if (teamParam == "62" || teamParam == "63") {
+                const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
               }
               setTeamResultList(teamResults);
@@ -97,6 +99,7 @@ export function ResultsSection() {
               if (teamParam == "81") {
                 teamResults?.push(avaliacao[0]);
               } else if (teamParam == "82" || teamParam == "83") {
+                const avaliacao: any = resultList?.filter(resultTeamAvaliationFilter);
                 setTeamResultList(avaliacao)
               }
               setTeamResultList(teamResults);
