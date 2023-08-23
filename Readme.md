@@ -1,0 +1,1 @@
+- Acessar ambiente de desenvolvimento: npm run dev

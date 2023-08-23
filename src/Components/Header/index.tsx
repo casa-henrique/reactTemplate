@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
+import { AiFillBell } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import LogoCodifica from "../../assets/images/Logos/Logo-Codifica.svg";
+import LogoDivino from "../../assets/images/Logos/Logo-DivinoMestre.png";
 import LogoIsraelita from "../../assets/images/Logos/Logo-Israelita.png";
 import LogoMaplebear from "../../assets/images/Logos/Logo-Maplebear.png";
-import LogoDivino from "../../assets/images/Logos/Logo-DivinoMestre.png";
 import { useSchoolNameContext } from "../../hooks/useSchoolNameContext";
-import { Content, HeaderContainer, NotifyBell, NotifyBox, UserBox, UserTitle } from "./styles";
-import {AiFillBell} from 'react-icons/ai'
-import { useHomeSectionSelectContext } from "../../hooks/useHomeSectionSelectedContext";
+import {
+  Content,
+  HeaderContainer,
+  NotifyBell,
+  NotifyBox,
+  UserBox,
+  UserTitle,
+} from "./styles";
 
 interface SchoolListProps {
   maplebear: string;
@@ -23,27 +29,30 @@ interface HeaderProps {
 export function Header({ schoolName, type }: HeaderProps) {
   const navigate = useNavigate();
   const { setSchoolName } = useSchoolNameContext();
-  const[userInfos, setUserInfos] = useState<any>()
-  const { setSectionSelect } = useHomeSectionSelectContext();
-  
+  const [userInfos, setUserInfos] = useState<any>();
+
   useEffect(() => {
-      const user = localStorage.getItem('user');
-  
-      if(user) {
-        const userObject = JSON.parse(user)
-        setUserInfos(userObject)
-      }
-    }, []);
+    const user = localStorage.getItem("user");
+
+    if (user) {
+      const userObject = JSON.parse(user);
+      setUserInfos(userObject);
+    }
+  }, []);
 
   useEffect(() => {
     setSchoolName(schoolName);
   }, [schoolName]);
 
-  const schoolList = { maplebear: LogoMaplebear, israelita: LogoIsraelita, divinomestre: LogoDivino };
+  const schoolList = {
+    maplebear: LogoMaplebear,
+    israelita: LogoIsraelita,
+    divinomestre: LogoDivino,
+  };
 
   function userLogOut() {
-    localStorage.removeItem('user')
-    navigate(`/${schoolName}/login`)
+    localStorage.removeItem("user");
+    navigate(`/${schoolName}/login`);
   }
 
   return (
@@ -59,19 +68,37 @@ export function Header({ schoolName, type }: HeaderProps) {
 
         {type == "inside" ? (
           <nav className="navigation">
-            <a onClick={() => {navigate(`/${schoolName}/home`); setSectionSelect("dash")}}>Home</a>
-            <a onClick={() => {navigate(`/${schoolName}/home`); setSectionSelect("team")}}>Turmas</a>
+            <a
+              onClick={() => {
+                navigate(`/${schoolName}/home`);
+              }}
+            >
+              Home
+            </a>
+            <a
+              onClick={() => {
+                navigate(`/${schoolName}/home`);
+              }}
+            >
+              Turmas
+            </a>
             {/* <a>Comunidade</a> */}
           </nav>
         ) : null}
 
         {type == "inside" ? (
           <nav className="navigation user">
-            <NotifyBell><AiFillBell /></NotifyBell>
-            <NotifyBox><p>Em breve</p></NotifyBox>
+            <NotifyBell>
+              <AiFillBell />
+            </NotifyBell>
+            <NotifyBox>
+              <p>Em breve</p>
+            </NotifyBox>
             <p>|</p>
             <UserTitle>{userInfos ? userInfos.user.name : null}</UserTitle>
-            <UserBox onClick={() => userLogOut()}><p>Sair</p></UserBox>
+            <UserBox onClick={() => userLogOut()}>
+              <p>Sair</p>
+            </UserBox>
           </nav>
         ) : null}
       </Content>
